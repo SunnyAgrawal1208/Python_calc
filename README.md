@@ -76,3 +76,16 @@ class GUI(QMainWindow):
 ..* setDisplayText
 ..* getDisplayText
 ..* clearDisplay
+
+## 4: Create Model of application
+- Evaluting the Expression
+```
+def evaluateExpression(expression):
+    """Evaluate an expression."""
+    try:
+        result = str(eval(expression, {}, {})) 
+    except Exception:
+        result = ERROR_MSG
+
+    return result
+```

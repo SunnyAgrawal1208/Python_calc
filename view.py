@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtWidgets import QLineEdit
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QVBoxLayout
+
 class GUI(QMainWindow):
     """PyCalc's View (GUI)."""
     def __init__(self):
@@ -27,6 +28,7 @@ class GUI(QMainWindow):
         # Create the display and the buttons
         self._createDisplayLED()
         self._createButtons()
+
     def _createDisplayLED(self):
         """Create the display."""
         
@@ -39,7 +41,19 @@ class GUI(QMainWindow):
         
         # Add the display to the general layout
         self.generalLayout.addWidget(self.display)
-    
+    def _createDisplayLED(self):
+        """Create the display."""
+        
+        # Create the display widget
+        self.display = QLineEdit()
+        # Set some display's properties
+        self.display.setFixedHeight(35)
+        self.display.setAlignment(Qt.AlignRight)
+        self.display.setReadOnly(True)
+        
+        # Add the display to the general layout
+        self.generalLayout.addWidget(self.display)
+
     def _createButtons(self):
         """Create the buttons."""
         self.buttons = {}
@@ -66,7 +80,7 @@ class GUI(QMainWindow):
                    '+': (3, 3),
                    '=': (3, 4),
                   }
-# Create the buttons and add them to the grid layout
+        # Create the buttons and add them to the grid layout
         for btnText, pos in buttons.items():
             self.buttons[btnText] = QPushButton(btnText)
             self.buttons[btnText].setFixedSize(40, 40)
@@ -78,9 +92,11 @@ class GUI(QMainWindow):
         """Set display's text."""
         self.display.setText(text)
         self.display.setFocus()
+
     def getDisplayText(self):
         """Get display's text."""
         return self.display.text()
+
     def clearDisplay(self):
         """Clear the display."""
-        self.setDisplayText('') 
+        self.setDisplayText('')
